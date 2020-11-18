@@ -1,0 +1,6 @@
+.footer__menu-item_link {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+}

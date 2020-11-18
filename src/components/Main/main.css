@@ -1,0 +1,11 @@
+@import url(./__search-result-header/__search-result-header.css);
+@import url(./__add-card-to-list-button/__add-card-to-list-button.css);
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: center;
+
+  background-color: #F5F6F7;
+}

@@ -1,0 +1,22 @@
+@import url(./__container/__container.css);
+/* @import url(./__image/__image.css); */
+@import url(./__title/__title.css);
+@import url(./__form-login-link/__form-login-link.css);
+@import url(./__login-link/__login-link.css);
+/* @import url(./__close-button/__close-button.css); */
+@import url(./__form-close-button/__form-close-button.css);
+@import url(./_overlay/_overlay.css);
+
+
+.infotooltip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.75s;
+  -webkit-transition: all 0.75s;
+  -moz-transition: all 0.75s;
+}

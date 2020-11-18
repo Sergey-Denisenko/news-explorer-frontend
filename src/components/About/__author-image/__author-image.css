@@ -1,0 +1,26 @@
+.about__author-image {
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+  margin: 80px 0px;
+  padding: 0;
+  align-self: center;
+  display: block;
+  /* border: 1px solid red; */
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .about__author-image {
+    width: 232px;
+    height: 232px;
+    margin: 61px 0px;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .about__author-image {
+    width: 272px;
+    height: 272px;
+    margin: 32px 0px 0px 0px;
+  }
+}

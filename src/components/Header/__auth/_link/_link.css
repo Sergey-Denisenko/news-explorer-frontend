@@ -1,0 +1,38 @@
+.header__auth_link {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  font-style: normal;
+  /* color: #1A1B22; */
+  color: inherit;
+  margin:0;
+  padding: 0;
+  text-decoration: none;
+
+}
+
+/* .header__auth_link:hover {
+  cursor: pointer;
+}
+
+@media all and (min-width: 300px) and (max-width: 767px) {
+  .header__auth_link {
+    font-size: 14px;
+    line-height: 17px;
+  }
+} */
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .header__auth_link {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .header__auth_link {
+    font-size: 18px;
+    margin: 0 auto;
+  }
+}
+

@@ -1,0 +1,19 @@
+.register__auth-error-message {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  box-sizing: border-box;
+  position: absolute;
+  width: inherit;
+  text-align: center;
+  margin-top: 17px;
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .register__auth-error-message {
+    margin-top: 15px;
+  }
+}

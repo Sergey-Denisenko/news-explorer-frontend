@@ -1,0 +1,40 @@
+.header__menu-mobile-icon {
+    /* background-image: url(../../../images/icon-menu-white.png); */
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 16px 0px 0px 0px;
+    padding: 0;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+}
+
+@media all and (min-width: 1024px) {
+  .header__menu-mobile-icon {
+    display: none;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .header__menu-mobile-icon {
+    display: none;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .header__menu-mobile-icon {
+    display: block;
+  }
+}
+
+.header__menu-mobile-icon:hover {
+  cursor: pointer;
+  /* opacity: 0.6; */
+}
+
+.header__menu-mobile-icon:focus {
+  outline: none;
+  /* opacity: 0.6; */
+}

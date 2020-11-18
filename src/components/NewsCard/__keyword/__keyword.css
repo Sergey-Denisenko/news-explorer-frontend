@@ -1,0 +1,47 @@
+.card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: block;
+  margin: 0;
+  padding: 8px 12px;
+  /* height: 40px; */
+  border-radius: 10px;
+
+  font-family: 'roboto', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  font-style: normal;
+  color: #000;
+  background-color: #FFF;
+/* Максимальная ширина текстового поля keyword */
+  max-width: 277px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .card__keyword {
+    top: 8px;
+    left: 8px;
+    /* Максимальная ширина текстового поля keyword */
+    max-width: 138px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .card__keyword {
+    top: 16px;
+    left: 16px;
+    /* Максимальная ширина текстового поля keyword */
+    max-width: 187px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

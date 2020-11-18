@@ -1,0 +1,39 @@
+.card__tooltip {
+  display: block;
+  background-color: #FFF;
+  /* width: 159px; */
+  /* height: 40px; */
+  position: absolute;
+  top: 24px;
+  right: 69px;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 13px 13px;
+
+  font-family: 'roboto', Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+  font-style: normal;
+  color: #000;
+  background-color: #FFF;
+
+  transition: all 0.15s linear 0s;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .card__tooltip {
+    top: 8px;
+    right: 53px;
+    padding: 6px 6px;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .card__tooltip {
+    top: 16px;
+    right: 61px;
+  }
+}
