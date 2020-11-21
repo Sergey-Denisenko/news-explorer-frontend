@@ -1,0 +1,4 @@
+.card__tooltip_disable {
+  display: none;
+  transition: all 0.15s linear 0s;
+}

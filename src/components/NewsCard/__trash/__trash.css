@@ -1,0 +1,45 @@
+.card__trash {
+  display: block;
+  background-image: url("../../../images/icon-trash-grey.png");
+  background-color: #FFF;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.15s linear 0s;
+}
+
+.card__trash:hover {
+  /* opacity: 0.6; */
+  cursor: pointer;
+  background-image: url("../../../images/icon-trash-black.png");
+}
+
+.card__trash:focus, .card__trash:active {
+  outline: none;
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .card__trash {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .card__trash {
+    top: 16px;
+    right: 16px;
+  }
+}

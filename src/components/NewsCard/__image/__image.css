@@ -1,0 +1,23 @@
+.card__image {
+  width: 400px;
+  height: 272px;
+  border-radius: 16px 16px 0px 0px;
+}
+
+.card__image:hover {
+  cursor: pointer;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .card__image {
+    width: 224px;
+    height: 150px;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .card__image {
+    width: 288px;
+    height: 196px;
+  }
+}
