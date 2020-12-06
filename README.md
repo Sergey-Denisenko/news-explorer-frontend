@@ -1,5 +1,5 @@
 # news-explorer-frontend
-Дипломная работа. Frontend часть приложения NewsExplorer
+Дипломная работа. функциональность на «Реакте» и JS приложения NewsExplorer
 ____
 
 **Дипломная работа представляет работу над приложением "NewsExplorer": интерактивной страницей,
@@ -18,4 +18,4 @@ ____
 
 ____
 
-Репозиторий Frontend (news-explorer-frontend): https://github.com/Sergey-Denisenko/news-explorer-frontend.git ветка level-2
+Репозиторий Frontend (news-explorer-frontend): https://github.com/Sergey-Denisenko/news-explorer-frontend.git ветка level-3

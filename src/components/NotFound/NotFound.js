@@ -2,10 +2,10 @@ import React from 'react';
 import notFoundImagePath from '../../images/not-found_v1.png';
 import { newsCardListNotFoundHeader, newsCardListNotFoundtParagraph } from '../../utils/constants';
 
-function NotFound() {
+function NotFound({isSearchEmpty}) {
   return (
 
-    <section className="not-found">
+    <section className={`not-found ${isSearchEmpty === true ? 'not-found_visible' : ''}`}>
       <img className="not-found__not-found-image" src={notFoundImagePath} alt="Картинка не найденного изображения" />
       <div className="not-found__text-container">
         <h2 className="not-found__text-header">{newsCardListNotFoundHeader}</h2>

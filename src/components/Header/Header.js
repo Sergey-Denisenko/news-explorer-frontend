@@ -6,7 +6,8 @@ import Navigation from '../Navigation/Navigation';
 import {
   headerLogoText,
   // headerButtonAuthText,
-  routePathMainPage, routePathSavedNews,
+  routePathMainPage,
+  // routePathSavedNews,
 } from '../../utils/constants';
 
 function Header({
@@ -20,7 +21,8 @@ function Header({
   isSavedNewsPageOpen,
   handleMainPageLinkClick,
   isMainPageOpen,
-  // onSignOut,
+  loggedIn,
+  onSignOut,
 }) {
   return (
     <header className={`header ${isHeaderMenuOpen === true ? 'header_mobile-color-back-dark' : ''} ${isSavedNewsPageOpen === true ? 'header_color-background' : ''} `}>
@@ -36,12 +38,14 @@ function Header({
         handleHeaderMenuOpenClick={handleHeaderMenuOpenClick}
         isHeaderMenuOpen={isHeaderMenuOpen}
         // routePath={routePathMainPage}
-        routePathAuth="/sign-up"
+        routePathAuth={routePathAuth}
         handleHeaderAuthButtonClick={handleHeaderAuthButtonClick}
         handleSavedNewsPageLinkClick={handleSavedNewsPageLinkClick}
         isSavedNewsPageOpen={isSavedNewsPageOpen}
         handleMainPageLinkClick={handleMainPageLinkClick}
         isMainPageOpen={isMainPageOpen}
+        loggedIn={loggedIn}
+        onSignOut={onSignOut}
       />
     </header>
   );
