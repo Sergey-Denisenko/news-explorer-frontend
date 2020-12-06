@@ -1,0 +1,46 @@
+.card__like {
+  display: block;
+  background-image: url("../../../images/icon-flag-liked-news-normal.png");
+  background-color: #FFF;
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.15s linear 0s;
+}
+
+.card__like:hover {
+  background-image: url("../../../images/icon-flag-liked-news-hover.png");
+  /* opacity: 0.6; */
+  cursor: pointer;
+}
+
+.card__like:focus, .card__like:active {
+  background-image: url("../../../images/icon-flag-liked-news-marked.png");
+  outline: none;
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .card__like {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .card__like {
+    top: 16px;
+    right: 16px;
+  }
+}

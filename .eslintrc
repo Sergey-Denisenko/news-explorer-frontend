@@ -1,0 +1,16 @@
+{
+"env": {
+  "es6": true,
+  "browser": true
+ },
+"rules": {
+  // "react/jsx-filename-extension": 0,
+  "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+},
+"parser": "babel-eslint",
+"parserOptions": {
+  "sourceType": "module",
+  "allowImportExportEverywhere": true,
+  "codeFrame": true
+}
+}

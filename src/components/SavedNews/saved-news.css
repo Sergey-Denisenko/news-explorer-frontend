@@ -1,0 +1,8 @@
+.saved-news {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: center;
+
+  background-color: #F5F6F7;
+}

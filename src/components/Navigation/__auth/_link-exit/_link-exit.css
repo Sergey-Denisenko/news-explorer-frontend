@@ -1,0 +1,18 @@
+.navigation__auth_link-exit {
+  background-image: url(../../../../images/exit-icon-white.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0px 0px 0px 12px;
+  padding: 0;
+  display: block;
+  width: 17.4px;
+  height: 16px;
+  background-color: transparent;
+  border: none;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .navigation__auth_link-exit {
+    margin: 0px 0px 0px 11px;
+  }
+}

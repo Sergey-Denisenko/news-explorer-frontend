@@ -1,0 +1,32 @@
+.page {
+  font-family: 'roboto', Arial, sans-serif;
+  min-width: 320px;
+  max-width: 1440px;
+  position: relative;
+  margin: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  min-height: 80vh;
+  /* max-height: 100vh; */
+
+  background-image: url(../../images/georgia-de-lotz--UsJoNxLaNo-unsplash.png);
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .page {
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .page {
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+}

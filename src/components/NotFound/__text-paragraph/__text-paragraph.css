@@ -1,0 +1,12 @@
+.not-found__text-paragraph {
+  font-family: 'roboto', Arial, sans-serif;
+  margin: 16px 0px 0px 0px;
+  padding: 0;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+  color: #B6BCBF;
+  text-align: center;
+  text-decoration: none;
+}

@@ -1,0 +1,9 @@
+.register__button_disabled {
+  color: #B6BCBF;
+  background: #E6E8EB;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  cursor: default;
+  pointer-events: none;
+}

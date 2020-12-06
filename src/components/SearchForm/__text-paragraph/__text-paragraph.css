@@ -1,0 +1,22 @@
+.search-form__text-paragraph {
+  font-family: 'roboto', Arial, sans-serif;
+  margin: 32px 0px 0px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+  color: #FFF;
+  text-decoration: none;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .search-form__text-paragraph {
+    margin: 16px 0px 0px;
+  }
+}
+
+@media all and (min-width: 320px) and (max-width: 767px) {
+  .search-form__text-paragraph {
+    margin: 16px 0px 0px;
+  }
+}
