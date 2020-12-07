@@ -42,10 +42,13 @@ const apiKey= '883fdfad9dfa4f71823164f0f43088ff';
 
 const optionsMainApi = {
   baseUrl: 'https://api.allnews.students.nomoreparties.site',
+  // baseUrl: 'https://api.allnews.students.nomoreparties.site',
   headers: {
     'Content-Type': 'application/json'
   }
 };
+
+const displayCardQuantity = 3;
 
 module.exports = {
   headerLogoText,
@@ -78,4 +81,5 @@ module.exports = {
   pageSize,
   apiKey,
   optionsMainApi,
+  displayCardQuantity,
 };

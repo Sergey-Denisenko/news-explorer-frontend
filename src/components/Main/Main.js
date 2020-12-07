@@ -29,7 +29,8 @@ function Main({
 }) {
   return (
     // ((isDataReceive === true && isSearchEmpty === false) || ((searchPhrase !== '') && loggedIn === true)) &&
-    ((isDataReceive === true && isSearchEmpty === false) || (localStorage.getItem('data') !== null && loggedIn === true && isRequestError === false)) &&
+    ((isDataReceive === true && isSearchEmpty === false) || ((localStorage.getItem('data') !== null && (JSON.parse(localStorage.getItem('data'))).length !== 0) && isRequestError === false)) &&
+    // ((isDataReceive === true && isSearchEmpty === false) || (localStorage.getItem('data') !== null && loggedIn === true && isRequestError === false)) &&
     <main className="main">
       <p className="main__search-result-header">Результаты поиска</p>
       <NewsCardList

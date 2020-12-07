@@ -17,6 +17,7 @@ function Register({
   isHeaderMenuOpen,
   isRegister,
   authError,
+  isButtonDisable,
 }) {
 
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
@@ -33,7 +34,7 @@ function Register({
 
   return (
     <PopupWithForm name="register" title="Регистрация" isOpen={isOpen} closePopup={closePopup} onClose={onClose} onSubmit={handleSubmit} isSubmitDataSendState={isSubmitDataSendState} submitButtonText={isSubmitDataSendState === false ? 'Зарегистрироваться' : 'Идет регистрация...'} handleSubmitDataSendState={handleSubmitDataSendState} setClearMessage={setClearMessage} handleLoginLinkClick={handleLoginLinkClick} handleIsRegister={handleIsRegister} isHeaderMenuOpen={isHeaderMenuOpen}
-    isDisable={!isValid}
+    isDisable={!isValid} isButtonDisable={isButtonDisable}
     >
       <p className="register__form-input-title">Email</p>
       <input

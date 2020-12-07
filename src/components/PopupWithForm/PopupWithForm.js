@@ -19,6 +19,7 @@ function PopupWithForm({
   isHeaderMenuOpen,
   children,
   isDisable,
+  isButtonDisable,
 }) {
   // Закрытие попапов по нажатию ESC и клику на overlay
   React.useEffect(() => {
@@ -56,10 +57,10 @@ function PopupWithForm({
           <div className={`register register_type_${name} ${isHeaderMenuOpen ? '' : 'register_overlay'} ${isOpen ? 'register_opened' : ''}`}>
             <form className="register__container popup__form" noValidate name={name} onSubmit={onSubmit}>
               <h2 className="register__form-title">{title}</h2>
-              <fieldset className="register__form-profile popup__fieldset">
+              <fieldset className="register__form-profile popup__fieldset" disabled={isButtonDisable === true}>
                 {children}
 
-                {isDisable === true
+                {(isDisable === true || isButtonDisable === true)
                 &&
                 <button
                   type="submit"
@@ -70,7 +71,7 @@ function PopupWithForm({
                 </button>
                 }
 
-                {isDisable === false
+                {(isDisable === false && isButtonDisable === false)
                 &&
                 <button
                   type="submit"
@@ -97,10 +98,10 @@ function PopupWithForm({
         <div className={`register register_type_${name} ${isHeaderMenuOpen ? '' : 'register_overlay'} ${isOpen ?'register_opened' : ''}`}>
           <form className="register__container popup__form" noValidate name={name} onSubmit={onSubmit}>
             <h2 className="register__form-title">{title}</h2>
-            <fieldset className="register__form-profile popup__fieldset">
+            <fieldset className="register__form-profile popup__fieldset" disabled={isButtonDisable === true}>
               {children}
 
-                {isDisable === true
+                {(isDisable === true || isButtonDisable === true)
                 &&
                 <button
                   type="submit"
@@ -111,7 +112,7 @@ function PopupWithForm({
                 </button>
                 }
 
-                {isDisable === false
+                {(isDisable === false && isButtonDisable === false)
                 &&
                 <button
                   type="submit"

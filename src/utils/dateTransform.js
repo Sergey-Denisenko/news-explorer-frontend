@@ -1,16 +1,16 @@
 function dateTransform(dateForTransform) {
-  let dayAndMonth = new Date(dateForTransform);
-  let formatOptionsDayAndMonth = {
+  const dayAndMonth = new Date(dateForTransform);
+  const formatOptionsDayAndMonth = {
         day:    'numeric',
         month:  'long'
   };
-  let dayAndMonthString = dayAndMonth.toLocaleDateString('ru', formatOptionsDayAndMonth);
+  const dayAndMonthString = dayAndMonth.toLocaleDateString('ru', formatOptionsDayAndMonth);
 
-  let year = new Date(dateForTransform);
-  let formatOptionsYear = {
+  const year = new Date(dateForTransform);
+  const formatOptionsYear = {
         year:   'numeric'
   };
-  let yearString = year.toLocaleDateString('ru', formatOptionsYear);
+  const yearString = year.toLocaleDateString('ru', formatOptionsYear);
 
   const fullDate = `${dayAndMonthString}, ${yearString}`;
   return fullDate;

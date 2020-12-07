@@ -25,6 +25,7 @@ import mainApi from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { routePathMainPage, routePathSavedNews } from '../../utils/constants';
 import { newsCardListRequestErrorMessage } from '../../utils/constants';
+import { displayCardQuantity } from '../../utils/constants';
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
   const [disabled, setDisabled] = React.useState(false);
   const [authError, setAuthError] = React.useState('');
   const [isRequestError, setIsRequestError] = React.useState(false);
+  const [isButtonDisable, setIsButtonDisable] = React.useState(false); //Откл кнопки при запросе рег или лог
 
   // const handleKeyword = () => {
   //   setKeyword(localStorage.getItem('searchPhrase') || '');
@@ -84,10 +86,10 @@ function App() {
     handleEndOfArray();
   };
 
-  const endPosition = (showMoreClickCount * 3);
+  const endPosition = (showMoreClickCount * displayCardQuantity);
 
   const handleEndOfArray = () => {
-    if (endPosition >= cards.length - 3) {
+    if (endPosition >= cards.length - displayCardQuantity) {
       setIsAllNewsShowOnPage(true);
     }
   }
@@ -117,7 +119,7 @@ function App() {
 
   const handleHeaderMenuOpenClick = () => {
     setIsHeaderMenuOpen(!isHeaderMenuOpen);
-    console.log('OPEN');
+    // console.log('OPEN');
   };
 
   const handleShowTooltip = () => {
@@ -271,6 +273,7 @@ function App() {
   // Регистрация нового пользователя
   const onRegister = (email, password, name) => {
     setAuthError('');
+    setIsButtonDisable(true);
     mainApi.register(email, password, name)
     .then(res => res)
     .then((data) => {
@@ -292,12 +295,15 @@ function App() {
     })
     .finally(() => {
       handleSubmitDataSendState();
+      setIsButtonDisable(false);
     });
   };
 
   // Авторизация пользователя
   const onLogin = (email, password) => {
     setAuthError('');
+    setIsButtonDisable(true);
+    console.log(isButtonDisable);
     mainApi.login(email, password)
     .then((res) => {
       closeAllPopups();
@@ -317,6 +323,7 @@ function App() {
     })
     .finally(() => {
       handleSubmitDataSendState();
+      setIsButtonDisable(false);
     });
   };
 
@@ -339,6 +346,7 @@ const onSignOut = () => {
   setClearMessage();// Устанавливаю в message пустую строку (отработка ошибок)
   setIsDataReceive(false);
   setIsRequestError(false);
+  setIsHaveSavedArticles(false);
   setCurrentUser({
     ...currentUser,
     email: '',
@@ -373,11 +381,15 @@ const tokenCheck = () => {
 
       // localStorage.setItem('savedData', []);
       if ((localStorage.getItem('savedData') === null)) {
+        // if ((JSON.parse(localStorage.getItem('savedData'))).length !== 0) {
+          handleGetSavedArticlesFromServer();
+        // }
+      }
+      if ((localStorage.getItem('savedData') !== null)) {
+        setSavedCards([...savedCards, ...(JSON.parse(localStorage.getItem('savedData')))]);
+        setIsHaveSavedArticles(true);
 
         // if ((JSON.parse(localStorage.getItem('savedData'))).length !== 0) {
-
-
-          handleGetSavedArticlesFromServer();
         // }
       }
     })
@@ -394,6 +406,13 @@ const tokenCheck = () => {
         console.log(err);
       }
     });
+  }
+  // Загрузка предыдущего поиска, не зависимо от рег или не рег
+  if(!token) {
+    if (localStorage.getItem('data') !== null) {
+      setCards([...cards, ...(JSON.parse(localStorage.getItem('data')))]);
+      // setCards([...(JSON.parse(localStorage.getItem('data')))]);
+    }
   }
 };
 
@@ -507,6 +526,7 @@ function handleDeleteArticleFromSavedNews(card) {
 
           <Switch>
             <ProtectedRoute
+              // path задан ссылкой из списка констант - файл utils/constants.js
               path={routePathSavedNews}
               loggedIn={loggedIn}
               component={SavedNews}
@@ -568,6 +588,7 @@ function handleDeleteArticleFromSavedNews(card) {
             isSubmitDataSendState={isSubmitDataSendState}
             handleSubmitDataSendState={handleSubmitDataSendState}
             authError={authError}
+            isButtonDisable={isButtonDisable}
           />
         </Route>
 
@@ -582,6 +603,7 @@ function handleDeleteArticleFromSavedNews(card) {
             isSubmitDataSendState={isSubmitDataSendState}
             handleSubmitDataSendState={handleSubmitDataSendState}
             authError={authError}
+            isButtonDisable={isButtonDisable}
           />
         </Route>
 

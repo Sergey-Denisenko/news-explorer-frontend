@@ -15,6 +15,7 @@ function Login({
   handleRegisterLinkClick,
   isHeaderMenuOpen,
   authError,
+  isButtonDisable,
 }) {
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
@@ -39,7 +40,7 @@ function Login({
   };
 
   return (
-    <PopupWithForm name="login" title="Вход" isOpen={isOpen} closePopup={closePopup} onClose={onClose} onSubmit={handleSubmit} isSubmitDataSendState={isSubmitDataSendState} submitButtonText={isSubmitDataSendState === false ? 'Войти' : 'Выполняется вход...'} handleSubmitDataSendState={handleSubmitDataSendState} setClearMessage={setClearMessage} handleRegisterLinkClick={handleRegisterLinkClick} isHeaderMenuOpen={isHeaderMenuOpen} isDisable={!isValid}>
+    <PopupWithForm name="login" title="Вход" isOpen={isOpen} closePopup={closePopup} onClose={onClose} onSubmit={handleSubmit} isSubmitDataSendState={isSubmitDataSendState} submitButtonText={isSubmitDataSendState === false ? 'Войти' : 'Выполняется вход...'} handleSubmitDataSendState={handleSubmitDataSendState} setClearMessage={setClearMessage} handleRegisterLinkClick={handleRegisterLinkClick} isHeaderMenuOpen={isHeaderMenuOpen} isDisable={!isValid} isButtonDisable={isButtonDisable}>
       <p className="register__form-input-title">Email</p>
       <input
         id="email-input"
