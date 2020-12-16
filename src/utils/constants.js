@@ -12,7 +12,7 @@ const footerMenuLinkFB = 'https://www.facebook.com/serugi.denisenko';
 
 const aboutTextHeader = 'Об авторе';
 const aboutTextParagraph = `Меня зовут Сергей Денисенко. Я Веб-разработчик. Прошел обучение в Яндекс Практикум, где овладел рядом технологий веб разработки:
-HTML, CSS, язык программирования JavaScript, React JS, адаптивная вёрстка (grid, flex), методология БЭМ, ООП (объекты, методы, классы)`;
+HTML, CSS, язык программирования JavaScript, React JS, адаптивная вёрстка (grid, flex), методология БЭМ, ООП (объекты, методы, классы). И это мой дипломный проект!`;
 
 // Текстовые константы используемые в блоке SearchForm
 const searchFormTextHeader = 'Что творится в мире?';
