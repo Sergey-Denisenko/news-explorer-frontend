@@ -6,7 +6,7 @@ import {
   useHistory,
   withRouter,
 } from 'react-router-dom';
-// import { initialCards } from '../../utils/constants';
+
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
@@ -31,7 +31,6 @@ function App() {
 
   const [cards, setCards] = React.useState([]);
   const [savedCards, setSavedCards] = React.useState([]);
-  // const [keyword, setKeyword] = React.useState('');
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -44,7 +43,6 @@ function App() {
   const [isSavedNewsPageOpen, setIsSavedNewsPageOpen] = React.useState(false);
   const [isMainPageOpen, setIsMainPageOpen] = React.useState(true);
   const [isInfoTooltipAuthOpen, setIsInfoTooltipAuthOpen] = React.useState(false);
-  const [isShowTooltip, setIsShowTooltip] = React.useState(false);
   const [isHeaderMenuOpen, setIsHeaderMenuOpen] = React.useState(false);
   const [isSignOut, setIsSignOut] = React.useState(false);
   const [searchPhrase, setSearchPhrase] = React.useState('');
@@ -56,19 +54,12 @@ function App() {
   const [showMoreClickCount, setShowMoreClickCount] = React.useState(1);
   const [currentUser,  setCurrentUser] = React.useState({ email: '', name: '', _id: '' });
   const [isHaveSavedArticles, setIsHaveSavedArticles] = React.useState(false);
-  const [isArticleSaved, setIsArticleSaved] = React.useState(false);
-  const [tempCardForDelete, setTempCardForDelete] = React.useState({}); //Переменная состояния
-  const [disabled, setDisabled] = React.useState(false);
   const [authError, setAuthError] = React.useState('');
   const [isRequestError, setIsRequestError] = React.useState(false);
   const [isButtonDisable, setIsButtonDisable] = React.useState(false); //Откл кнопки при запросе рег или лог
 
   // const handleKeyword = () => {
   //   setKeyword(localStorage.getItem('searchPhrase') || '');
-  // };
-
-  // const handleIsArticleSaved = () => {
-  //   setIsArticleSaved(!isArticleSaved);
   // };
 
   // const handleLoggedIn = () => {
@@ -112,7 +103,6 @@ function App() {
   //   console.log(cards);
   // };
 
-
   // React.useEffect(() => {
   //   handleSetCards();
   // },[]);
@@ -120,10 +110,6 @@ function App() {
   const handleHeaderMenuOpenClick = () => {
     setIsHeaderMenuOpen(!isHeaderMenuOpen);
     // console.log('OPEN');
-  };
-
-  const handleShowTooltip = () => {
-    setIsShowTooltip(!isShowTooltip);
   };
 
   const handleInfoTooltipAuth = () => {
@@ -196,11 +182,11 @@ function App() {
     handleInfoTooltipAuth();
   };
 
-  const handleIsSignOut = () => {
-    setIsSignOut(!isSignOut);
-    setIsRegister(false);
-    setLoggedIn(false);
-  };
+  // const handleIsSignOut = () => {
+  //   setIsSignOut(!isSignOut);
+  //   setIsRegister(false);
+  //   setLoggedIn(false);
+  // };
 
   // Получение данных пользователя и массива новостей при загрузке страницы
   React.useEffect(() => {
@@ -269,7 +255,7 @@ function App() {
         }
       }
     }
-
+console.log(isDataReceive);
   // Регистрация нового пользователя
   const onRegister = (email, password, name) => {
     setAuthError('');
@@ -335,7 +321,6 @@ const onSignOut = () => {
   localStorage.removeItem('data');
   localStorage.removeItem('searchPhrase');
   localStorage.removeItem('savedData');
-  // setIsSearchEmpty(true);
   setSearchPhrase('');
   setIsSignOut(true);
   history.push('/');
@@ -364,6 +349,7 @@ const tokenCheck = () => {
       return res;
     })
     .then((userData) => {
+      setLoggedIn(true);
       setCurrentUser({
         ...currentUser,
         name: userData.data.name,
@@ -371,26 +357,18 @@ const tokenCheck = () => {
         _id: userData.data._id,
       })
       localStorage.setItem('name', userData.data.name);
-      setLoggedIn(true);
       setName(localStorage.getItem('name'));
 
       if (localStorage.getItem('data') !== null) {
         setCards([...cards, ...(JSON.parse(localStorage.getItem('data')))]);
-        // setCards([...(JSON.parse(localStorage.getItem('data')))]);
       }
 
-      // localStorage.setItem('savedData', []);
       if ((localStorage.getItem('savedData') === null)) {
-        // if ((JSON.parse(localStorage.getItem('savedData'))).length !== 0) {
           handleGetSavedArticlesFromServer();
-        // }
       }
       if ((localStorage.getItem('savedData') !== null)) {
         setSavedCards([...savedCards, ...(JSON.parse(localStorage.getItem('savedData')))]);
         setIsHaveSavedArticles(true);
-
-        // if ((JSON.parse(localStorage.getItem('savedData'))).length !== 0) {
-        // }
       }
     })
     .catch((err) => {
@@ -411,7 +389,6 @@ const tokenCheck = () => {
   if(!token) {
     if (localStorage.getItem('data') !== null) {
       setCards([...cards, ...(JSON.parse(localStorage.getItem('data')))]);
-      // setCards([...(JSON.parse(localStorage.getItem('data')))]);
     }
   }
 };
@@ -467,7 +444,6 @@ function handleGetSavedArticlesFromServer() {
         _id:item._id,
       }))
       localStorage.setItem('savedData', JSON.stringify(savedCardFromServerUpdateField));
-      setSavedCards([...savedCards, ...(JSON.parse(localStorage.getItem('savedData')))]);
       setSavedCards([...(JSON.parse(localStorage.getItem('savedData')))]);
       setIsHaveSavedArticles(true);
     } else {
@@ -509,13 +485,11 @@ function handleDeleteArticleFromSavedNews(card) {
         <div className="page">
 
           <Header
+            routePath={routePathMainPage}
             handleHeaderMenuOpenClick={handleHeaderMenuOpenClick}
             isHeaderMenuOpen={isHeaderMenuOpen}
-            routePath={routePathMainPage}
-            routePathAuth="/sign-up"
             handleHeaderAuthButtonClick={handleHeaderAuthButtonClick}
-            // routePathSavedNews={routePathSavedNews}
-            // routePathMainPage={routePathMainPage}
+            routePathAuth="/sign-up"
             handleSavedNewsPageLinkClick={handleSavedNewsPageLinkClick}
             isSavedNewsPageOpen={isSavedNewsPageOpen}
             handleMainPageLinkClick={handleMainPageLinkClick}
@@ -526,14 +500,11 @@ function handleDeleteArticleFromSavedNews(card) {
 
           <Switch>
             <ProtectedRoute
-              // path задан ссылкой из списка констант - файл utils/constants.js
               path={routePathSavedNews}
               loggedIn={loggedIn}
               component={SavedNews}
               isMainPageOpen={isMainPageOpen}
               isSavedNewsPageOpen={isSavedNewsPageOpen}
-              handleShowTooltip={handleShowTooltip}
-              isShowTooltip={isShowTooltip}
               cards={savedCards}
               isHaveSavedArticles={isHaveSavedArticles}
               handleDeleteArticleFromSavedNews={handleDeleteArticleFromSavedNews}
@@ -543,28 +514,20 @@ function handleDeleteArticleFromSavedNews(card) {
               <SearchForm handleSearchNewsSubmit={handleSearchNewsSubmit}/>
               <Main
                 cards={cards}
-                showMore={showMore}
-                setShowMore={setShowMore}
                 isMainPageOpen={isMainPageOpen}
                 isSavedNewsPageOpen={isSavedNewsPageOpen}
-                handleShowTooltip={handleShowTooltip}
-                isShowTooltip={isShowTooltip}
-                searchPhrase={searchPhrase}
                 handleShowMoreClick={handleShowMoreClick}
-                handleShowMoreClickCount={handleShowMoreClickCount}
-                showMoreClickCount={showMoreClickCount}
                 isAllNewsShowOnPage={isAllNewsShowOnPage}
                 setIsAllNewsShowOnPage={setIsAllNewsShowOnPage}
-                // handleIsAllNewsShowOnPage={handleIsAllNewsShowOnPage}
                 isDataReceive={isDataReceive}
                 isSearchEmpty={isSearchEmpty}
                 endPosition={endPosition}
                 loggedIn={loggedIn}
                 handleSaveArticleToSavedNews={handleSaveArticleToSavedNews}
-                isArticleSaved={isArticleSaved}
                 isRequestError={isRequestError}
                 handleHeaderAuthButtonClick={handleHeaderAuthButtonClick}
                 routePathAuth="/sign-up"
+                isNewsRequestToApiInProrgess={isNewsRequestToApiInProrgess}
               />
               <Preloader isNewsRequestToApiInProrgess={isNewsRequestToApiInProrgess}/>
               <NotFound isSearchEmpty={isSearchEmpty}/>
@@ -579,11 +542,8 @@ function handleDeleteArticleFromSavedNews(card) {
           <Register
             onRegister={onRegister}
             closePopup={closeAllPopups}
-            onClose={onClose}
             isOpen={isRegisterPopupOpen}
             handleLoginLinkClick={handleLoginLinkClick}
-            handleInfoTooltipAuth={handleInfoTooltipAuth}
-            handleIsRegister={handleIsRegister}
             isHeaderMenuOpen={isHeaderMenuOpen}
             isSubmitDataSendState={isSubmitDataSendState}
             handleSubmitDataSendState={handleSubmitDataSendState}
@@ -613,7 +573,6 @@ function handleDeleteArticleFromSavedNews(card) {
 
         <InfoTooltip
           closePopup={closeAllPopups}
-          onClose={onClose}
           isOpen={isInfoTooltipAuthOpen}
           isRegister={isRegister}
           handleLoginLinkClick={handleLoginLinkClick}

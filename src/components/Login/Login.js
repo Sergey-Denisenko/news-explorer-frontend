@@ -4,43 +4,53 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import useFormWithValidation from '../../utils/formValidation';
 
 function Login({
-  isSubmitDataSendState,
-  handleSubmitDataSendState,
   onLogin,
-  message,
-  setClearMessage,
-  isOpen,
   closePopup,
   onClose,
+  isOpen,
   handleRegisterLinkClick,
   isHeaderMenuOpen,
+  isSubmitDataSendState,
+  handleSubmitDataSendState,
   authError,
   isButtonDisable,
 }) {
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  // const [email, setEmail] = React.useState('');
+  // const [password, setPassword] = React.useState('');
 
-  function handleChangeEmail(evt) {
-    evt.preventDefault();
-    setEmail(evt.target.value);
-  }
+  // function handleChangeEmail(evt) {
+  //   evt.preventDefault();
+  //   setEmail(evt.target.value);
+  // }
 
-  function handleChangePassword(evt) {
-    evt.preventDefault();
-    setPassword(evt.target.value);
-  }
+  // function handleChangePassword(evt) {
+  //   evt.preventDefault();
+  //   setPassword(evt.target.value);
+  // }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // onLogin(email, password);
     onLogin(values.email, values.password);
-    // console.log(values.email, values.password)
   };
 
   return (
-    <PopupWithForm name="login" title="Вход" isOpen={isOpen} closePopup={closePopup} onClose={onClose} onSubmit={handleSubmit} isSubmitDataSendState={isSubmitDataSendState} submitButtonText={isSubmitDataSendState === false ? 'Войти' : 'Выполняется вход...'} handleSubmitDataSendState={handleSubmitDataSendState} setClearMessage={setClearMessage} handleRegisterLinkClick={handleRegisterLinkClick} isHeaderMenuOpen={isHeaderMenuOpen} isDisable={!isValid} isButtonDisable={isButtonDisable}>
+    <PopupWithForm
+      name="login"
+      title="Вход"
+      isOpen={isOpen}
+      closePopup={closePopup}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      isSubmitDataSendState={isSubmitDataSendState}
+      submitButtonText={isSubmitDataSendState === false ? 'Войти' : 'Выполняется вход...'}
+      handleSubmitDataSendState={handleSubmitDataSendState}
+      handleRegisterLinkClick={handleRegisterLinkClick}
+      isHeaderMenuOpen={isHeaderMenuOpen}
+      isDisable={!isValid}
+      isButtonDisable={isButtonDisable}
+    >
       <p className="register__form-input-title">Email</p>
       <input
         id="email-input"
@@ -72,7 +82,6 @@ function Login({
       <span id="password-input-error" className="register__error" >{errors.password  || ''}</span>
 
       <span id="message-error" className="register__auth-error-message">
-        {/* {message} */}
         {authError}
       </span>
     </PopupWithForm>

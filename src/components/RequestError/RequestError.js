@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import { newsCardListRequestErrorMessage } from '../../utils/constants';
-
 function RequestError({isRequestError, message}) {
   return (
 

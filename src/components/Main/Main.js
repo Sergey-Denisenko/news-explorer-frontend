@@ -4,51 +4,46 @@ import { newsCardListAddCardToListButtonText } from '../../utils/constants';
 
 function Main({
   cards,
-  handleShowMoreClick,
-  showMore,
-  setShowMore,
   isMainPageOpen,
   isSavedNewsPageOpen,
-  handleShowTooltip,
-  isShowTooltip,
-  searchPhrase,
-  handleShowMoreClickCount,
-  showMoreClickCount,
+  handleShowMoreClick,
   isAllNewsShowOnPage,
   setIsAllNewsShowOnPage,
-  // handleIsAllNewsShowOnPage,
   isDataReceive,
   isSearchEmpty,
   endPosition,
   loggedIn,
   handleSaveArticleToSavedNews,
-  isArticleSaved,
   isRequestError,
   handleHeaderAuthButtonClick,
   routePathAuth,
+  isNewsRequestToApiInProrgess,
 }) {
   return (
-    // ((isDataReceive === true && isSearchEmpty === false) || ((searchPhrase !== '') && loggedIn === true)) &&
-    ((isDataReceive === true && isSearchEmpty === false) || ((localStorage.getItem('data') !== null && (JSON.parse(localStorage.getItem('data'))).length !== 0) && isRequestError === false)) &&
-    // ((isDataReceive === true && isSearchEmpty === false) || (localStorage.getItem('data') !== null && loggedIn === true && isRequestError === false)) &&
+    (
+      (isDataReceive === true && isSearchEmpty === false)
+      ||
+      (
+        (
+          localStorage.getItem('data') !== null
+          &&
+          (JSON.parse(localStorage.getItem('data'))).length !== 0
+        )
+        &&
+        (isRequestError === false && isNewsRequestToApiInProrgess === false)
+      )
+    )
+    &&
     <main className="main">
       <p className="main__search-result-header">Результаты поиска</p>
       <NewsCardList
         cards={cards}
-        showMore={showMore}
-        setShowMore={setShowMore}
         isMainPageOpen={isMainPageOpen}
         isSavedNewsPageOpen={isSavedNewsPageOpen}
-        handleShowTooltip={handleShowTooltip}
-        isShowTooltip={isShowTooltip}
-        searchPhrase={searchPhrase}
-        showMoreClickCount={showMoreClickCount}
         setIsAllNewsShowOnPage={setIsAllNewsShowOnPage}
-        // handleIsAllNewsShowOnPage={handleIsAllNewsShowOnPage}
         endPosition={endPosition}
         loggedIn={loggedIn}
         handleSaveArticleToSavedNews={handleSaveArticleToSavedNews}
-        isArticleSaved={isArticleSaved}
         handleHeaderAuthButtonClick={handleHeaderAuthButtonClick}
         routePathAuth={routePathAuth}
       />

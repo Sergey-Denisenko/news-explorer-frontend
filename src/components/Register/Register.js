@@ -7,15 +7,10 @@ function Register({
   isSubmitDataSendState,
   handleSubmitDataSendState,
   onRegister,
-  message,
-  setClearMessage,
   isOpen,
   closePopup,
-  onClose,
   handleLoginLinkClick,
-  handleIsRegister,
   isHeaderMenuOpen,
-  isRegister,
   authError,
   isButtonDisable,
 }) {
@@ -25,7 +20,6 @@ function Register({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onRegister(values.email, values.password, values.name);
-    // console.log(values.email, values.password, values.name)
   };
 
   React.useEffect(() => {
@@ -33,8 +27,19 @@ function Register({
   }, [isOpen, resetForm]);
 
   return (
-    <PopupWithForm name="register" title="Регистрация" isOpen={isOpen} closePopup={closePopup} onClose={onClose} onSubmit={handleSubmit} isSubmitDataSendState={isSubmitDataSendState} submitButtonText={isSubmitDataSendState === false ? 'Зарегистрироваться' : 'Идет регистрация...'} handleSubmitDataSendState={handleSubmitDataSendState} setClearMessage={setClearMessage} handleLoginLinkClick={handleLoginLinkClick} handleIsRegister={handleIsRegister} isHeaderMenuOpen={isHeaderMenuOpen}
-    isDisable={!isValid} isButtonDisable={isButtonDisable}
+    <PopupWithForm
+      name="register"
+      title="Регистрация"
+      isOpen={isOpen}
+      closePopup={closePopup}
+      onSubmit={handleSubmit}
+      isSubmitDataSendState={isSubmitDataSendState}
+      submitButtonText={isSubmitDataSendState === false ? 'Зарегистрироваться' : 'Идет регистрация...'}
+      handleSubmitDataSendState={handleSubmitDataSendState}
+      handleLoginLinkClick={handleLoginLinkClick}
+      isHeaderMenuOpen={isHeaderMenuOpen}
+      isDisable={!isValid}
+      isButtonDisable={isButtonDisable}
     >
       <p className="register__form-input-title">Email</p>
       <input
@@ -82,7 +87,6 @@ function Register({
         placeholder="Введите своё имя" />
       <span id="password-input-error" className="register__error" >{errors.name || ''}</span>
       <span id="message-error" className="register__auth-error-message">
-        {/* {message} */}
         {authError}
       </span>
     </PopupWithForm>

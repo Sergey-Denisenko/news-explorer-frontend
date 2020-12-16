@@ -11,8 +11,6 @@ function Navigation({
   handleHeaderMenuOpenClick,
   isHeaderMenuOpen,
   handleHeaderAuthButtonClick,
-  routePathName,
-  routePath,
   routePathAuth,
   handleSavedNewsPageLinkClick,
   isSavedNewsPageOpen,

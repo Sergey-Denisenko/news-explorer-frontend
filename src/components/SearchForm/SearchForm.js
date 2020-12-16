@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import {
   searchFormTextHeader,
   searchFormTextParagraph,
-  // searchFormTextParagraphIfNotFound,
   placeholderText,
 } from '../../utils/constants';
 
@@ -27,7 +26,6 @@ const handleSubmit = (evt) => {
       <div className="search-form__text-container">
         <h1 className="search-form__text-header">{searchFormTextHeader}</h1>
         <p className="search-form__text-paragraph">{searchFormTextParagraph}</p>
-        {/* <p className="search-form__text-paragraph">{searchFormTextParagraphIfNotFound}</p> */}
       </div>
 
       <div className="search-form__form-input-field-container">

@@ -8,13 +8,6 @@ class MainApi {
     this._headers = this._optionsMainApi.headers
   }
 
-  // qw() {
-  //   console.log('this._baseUrl');
-  //   console.log(this._baseUrl);
-  //   console.log('BASE_URL');
-  //   console.log(BASE_URL);
-  // }
-
   getAllArticles(req, res, next) {
     Article.find({ owner: req.user._id }).select('+owner')
       .orFail(new NotFoundError('Not Found / Статьи у текущего пользователя не найдены')) // 404
@@ -23,27 +16,6 @@ class MainApi {
       })
       .catch(next);
   };
-
-  // addNewCardToServer(userCardData) {
-  //   return fetch(`${this._baseUrl}/cards`, {
-  //     method: 'POST',
-  //     headers: {
-  //       ...this._headers,
-  //       'authorization': `Bearer ${localStorage.getItem('token')}`,
-  //     },
-  //     body: JSON.stringify({
-  //       name: userCardData.name,
-  //       link: userCardData.link
-  //     })
-  //   })
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       // return Promise.reject(`Ошибка: ${res.status}`);
-  //       return Promise.reject(res.status);
-  //     })
-  // }
 
 // Сохранение статьи
   addArticleToSavedNews(selectedCard, keyword) {
@@ -60,12 +32,15 @@ class MainApi {
         date:selectedCard.publishedAt,
         source:selectedCard.source.name,
         link:selectedCard.url,
+        // image: 'https://ventil34.ru/upload/no_image.jpg',
         image:selectedCard.urlToImage,
         // owner:currentUser._id,
         // _id:_id,
       })
     })
       .then((res) => {
+        console.log('res');
+        console.log(res);
         if (res.ok) {
           return res.json();
         }
@@ -74,7 +49,7 @@ class MainApi {
       })
   }
 
-// Удаление статьи
+  // Удаление статьи
   deleteCardFromServer(id) {
     return fetch(`${this._baseUrl}/articles/${id}`, {
       method: 'DELETE',
@@ -91,7 +66,6 @@ class MainApi {
       })
   }
 
-
   // GET Взять все сохраненные статьи
   getSavedArticlesFromServer() {
     // return fetch(`${this._baseUrl}`, {
@@ -103,89 +77,83 @@ class MainApi {
     })
       .then((res) => {
         if (res.ok) {
-          // console.log('res.json in getSavedArticlesFromServer');
-          // console.log(res.json());
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
       })
   }
 
-
   register(email, password, name) {
-  return fetch(`${this._baseUrl}/signup`, {
-    method: 'POST',
-    headers: {
-      ...this._headers,
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({ email, password, name })
-  })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res);
-  })
-  .then((res) => {
-    return (res);
-  });
-}
+    return fetch(`${this._baseUrl}/signup`, {
+      method: 'POST',
+      headers: {
+        ...this._headers,
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email, password, name })
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res);
+    })
+    .then((res) => {
+      return (res);
+    });
+  }
 
-login(email, password) {
-  return fetch(`${this._baseUrl}/signin`, {
-    method: 'POST',
-    headers: {
-      ...this._headers,
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({ email, password })
-  })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res);
-  })
-  .then((data) => {
-    if (data.token) {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('email', email);
-      return data;
-    } else {
-      return
-    }
-  });
-}
+  login(email, password) {
+    return fetch(`${this._baseUrl}/signin`, {
+      method: 'POST',
+      headers: {
+        ...this._headers,
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res);
+    })
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', email);
+        return data;
+      } else {
+        return
+      }
+    });
+  }
 
-getContent = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'authorization': `Bearer ${token}`,
-    }
-  })
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res);
-  })
-  .then(res => res)
-  .then((data) => {
-    if (data.data.email) {
-      localStorage.setItem('name', data.data.name);
-      return data;
-    } else {
-      return
-    }
-  });
-}
-
-
-
+  getContent = (token) => {
+    return fetch(`${BASE_URL}/users/me`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'authorization': `Bearer ${token}`,
+      }
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res);
+    })
+    .then(res => res)
+    .then((data) => {
+      if (data.data.email) {
+        localStorage.setItem('name', data.data.name);
+        return data;
+      } else {
+        return
+      }
+    });
+  }
 }
 const mainApi = new MainApi(optionsMainApi);
 export default mainApi;

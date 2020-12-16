@@ -1,5 +1,4 @@
 import React from 'react';
-// import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { newsCardDeleteIconTooltipText, newsCardAddIconTooltipText } from '../../utils/constants';
 import dateTransform from '../../utils/dateTransform';
 import { Link } from 'react-router-dom';
@@ -8,13 +7,9 @@ function NewsCard({
   card,
   isMainPageOpen,
   isSavedNewsPageOpen,
-  handleShowTooltip,
-  isShowTooltip,
-  searchPhrase,
   loggedIn,
   handleSaveArticleToSavedNews,
   handleDeleteArticleFromSavedNews,
-  isArticleSaved,
   handleHeaderAuthButtonClick,
   routePathAuth,
 }) {
@@ -23,9 +18,8 @@ function NewsCard({
 
   function handleSaveTrashCardClick(evt) {
     evt.preventDefault();
-    if ((isMainPageOpen === true && loggedIn === true) && evt.target.classList.contains('card__like')) {
+    if ((isMainPageOpen === true && loggedIn === true) && !evt.target.classList.contains('card__like_active')) {
       handleSaveArticleToSavedNews(card);
-      // (loggedIn === true && isArticleSaved === true) && evt.target.classList.add('card__like_active');
     }
 
     if ((isMainPageOpen === true && loggedIn === true) && evt.target.classList.contains('card__like_active')) {
@@ -85,7 +79,7 @@ function NewsCard({
           id="like-trash-button"
           aria-label="Button like or trash"
           className={`card__like
-          ${!savedItem ? 'card__like_normal' : 'card__like_active'}`}
+          ${!savedItem ? 'card__like_normal' : 'card__like_active'}`} // Если карточка добавлена ставлю синий флажок
           onMouseOver={handleTooltipOn}
           onMouseLeave={handleTooltipOff}
           onClick={handleSaveTrashCardClick}

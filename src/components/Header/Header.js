@@ -1,21 +1,16 @@
 import React from 'react';
-// import headerPath from '../images/Vector_white.svg';
 import { Link } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 
 import {
   headerLogoText,
-  // headerButtonAuthText,
   routePathMainPage,
-  // routePathSavedNews,
 } from '../../utils/constants';
 
 function Header({
   handleHeaderMenuOpenClick,
   isHeaderMenuOpen,
   handleHeaderAuthButtonClick,
-  // routePathName,
-  // routePath,
   routePathAuth,
   handleSavedNewsPageLinkClick,
   isSavedNewsPageOpen,
@@ -37,7 +32,6 @@ function Header({
       <Navigation
         handleHeaderMenuOpenClick={handleHeaderMenuOpenClick}
         isHeaderMenuOpen={isHeaderMenuOpen}
-        // routePath={routePathMainPage}
         routePathAuth={routePathAuth}
         handleHeaderAuthButtonClick={handleHeaderAuthButtonClick}
         handleSavedNewsPageLinkClick={handleSavedNewsPageLinkClick}
