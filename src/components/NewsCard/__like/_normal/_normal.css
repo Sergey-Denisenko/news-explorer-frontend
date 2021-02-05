@@ -1,0 +1,7 @@
+.card__like_normal {
+  background-image: url("../../../../images/icon-flag-liked-news-normal.png");
+}
+
+.card__like_normal:hover {
+  background-image: url("../../../../images/icon-flag-liked-news-hover.png");
+}

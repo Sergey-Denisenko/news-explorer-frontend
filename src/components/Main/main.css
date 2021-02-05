@@ -1,5 +1,6 @@
 @import url(./__search-result-header/__search-result-header.css);
 @import url(./__add-card-to-list-button/__add-card-to-list-button.css);
+@import url(./__add-card-to-list-button/_not-visible/_not-visible.css);
 
 .main {
   display: flex;

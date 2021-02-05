@@ -1,26 +1,23 @@
 import React from 'react';
-// import headerPath from '../images/Vector_white.svg';
 import { Link } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 
 import {
   headerLogoText,
-  // headerButtonAuthText,
-  routePathMainPage, routePathSavedNews,
+  routePathMainPage,
 } from '../../utils/constants';
 
 function Header({
   handleHeaderMenuOpenClick,
   isHeaderMenuOpen,
   handleHeaderAuthButtonClick,
-  // routePathName,
-  // routePath,
   routePathAuth,
   handleSavedNewsPageLinkClick,
   isSavedNewsPageOpen,
   handleMainPageLinkClick,
   isMainPageOpen,
-  // onSignOut,
+  loggedIn,
+  onSignOut,
 }) {
   return (
     <header className={`header ${isHeaderMenuOpen === true ? 'header_mobile-color-back-dark' : ''} ${isSavedNewsPageOpen === true ? 'header_color-background' : ''} `}>
@@ -35,13 +32,14 @@ function Header({
       <Navigation
         handleHeaderMenuOpenClick={handleHeaderMenuOpenClick}
         isHeaderMenuOpen={isHeaderMenuOpen}
-        // routePath={routePathMainPage}
-        routePathAuth="/sign-up"
+        routePathAuth={routePathAuth}
         handleHeaderAuthButtonClick={handleHeaderAuthButtonClick}
         handleSavedNewsPageLinkClick={handleSavedNewsPageLinkClick}
         isSavedNewsPageOpen={isSavedNewsPageOpen}
         handleMainPageLinkClick={handleMainPageLinkClick}
         isMainPageOpen={isMainPageOpen}
+        loggedIn={loggedIn}
+        onSignOut={onSignOut}
       />
     </header>
   );

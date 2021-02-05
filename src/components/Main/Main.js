@@ -3,27 +3,53 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import { newsCardListAddCardToListButtonText } from '../../utils/constants';
 
 function Main({
-  handleShowMoreClick,
-  showMore,
+  cards,
   isMainPageOpen,
   isSavedNewsPageOpen,
-  handleShowTooltip,
-  isShowTooltip,
+  handleShowMoreClick,
+  isAllNewsShowOnPage,
+  setIsAllNewsShowOnPage,
+  isDataReceive,
+  isSearchEmpty,
+  endPosition,
+  loggedIn,
+  handleSaveArticleToSavedNews,
+  isRequestError,
+  handleHeaderAuthButtonClick,
+  routePathAuth,
+  isNewsRequestToApiInProrgess,
 }) {
   return (
-
+    (
+      (isDataReceive === true && isSearchEmpty === false)
+      ||
+      (
+        (
+          localStorage.getItem('data') !== null
+          &&
+          (JSON.parse(localStorage.getItem('data'))).length !== 0
+        )
+        &&
+        (isRequestError === false && isNewsRequestToApiInProrgess === false)
+      )
+    )
+    &&
     <main className="main">
       <p className="main__search-result-header">Результаты поиска</p>
       <NewsCardList
-        showMore={showMore}
+        cards={cards}
         isMainPageOpen={isMainPageOpen}
         isSavedNewsPageOpen={isSavedNewsPageOpen}
-        handleShowTooltip={handleShowTooltip}
-        isShowTooltip={isShowTooltip}
+        setIsAllNewsShowOnPage={setIsAllNewsShowOnPage}
+        endPosition={endPosition}
+        loggedIn={loggedIn}
+        handleSaveArticleToSavedNews={handleSaveArticleToSavedNews}
+        handleHeaderAuthButtonClick={handleHeaderAuthButtonClick}
+        routePathAuth={routePathAuth}
       />
       <button
         type="button"
-        className="main__add-card-to-list-button"
+        className={`main__add-card-to-list-button ${isAllNewsShowOnPage === true ? 'main__add-card-to-list-button_not-visible' : ''}`}
         onClick={handleShowMoreClick}
       >
         {newsCardListAddCardToListButtonText}

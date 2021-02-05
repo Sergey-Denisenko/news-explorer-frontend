@@ -7,15 +7,15 @@ function PopupWithForm({
   title,
   isOpen,
   closePopup,
-  onClose,
   onSubmit,
   submitButtonText = '',
-  submitDeleteButtonText = '',
   handleSubmitDataSendState,
-  setClearMessage,
-  handleLoginLinkClick, handleRegisterLinkClick, handleIsRegister,
+  handleLoginLinkClick,
+  handleRegisterLinkClick,
   isHeaderMenuOpen,
   children,
+  isDisable,
+  isButtonDisable,
 }) {
   // Закрытие попапов по нажатию ESC и клику на overlay
   React.useEffect(() => {
@@ -45,27 +45,39 @@ function PopupWithForm({
     };
   });
 
-  const alertTempMessage = () => {
-    alert('При нажатии "Войти" будет выполнен запрос на сервер для входа');
-  };
-
   return (
 
     <div className={`register register_type_${name} ${isHeaderMenuOpen ? '' : 'register_overlay'} ${isOpen ? 'register_opened' : ''}`}>
       {(isOpen && (name === 'register'))
         && (
           <div className={`register register_type_${name} ${isHeaderMenuOpen ? '' : 'register_overlay'} ${isOpen ? 'register_opened' : ''}`}>
-            <form className="register__container popup__form" noValidate name={name}>
+            <form className="register__container popup__form" noValidate name={name} onSubmit={onSubmit}>
               <h2 className="register__form-title">{title}</h2>
-              <fieldset className="register__form-profile popup__fieldset">
+              <fieldset className="register__form-profile popup__fieldset" disabled={isButtonDisable === true}>
                 {children}
+
+                {(isDisable === true || isButtonDisable === true)
+                &&
                 <button
-                  type="button"
-                  className="register__form-submit register__button"
-                  onClick={handleIsRegister}
+                  type="submit"
+                  className="register__form-submit register__button register__button_disabled"
+                  disabled
                 >
                   {submitButtonText}
                 </button>
+                }
+
+                {(isDisable === false && isButtonDisable === false)
+                &&
+                <button
+                  type="submit"
+                  className="register__form-submit register__button"
+                  // onClick={handleIsRegister}
+                  onClick={handleSubmitDataSendState}
+                >
+                  {submitButtonText}
+                </button>
+                }
                 <div className="register__form-login-link">
                   или&nbsp;
                   <Link to="/sign-in" className="register__login-link" onClick={handleLoginLinkClick}>Войти</Link>
@@ -80,17 +92,34 @@ function PopupWithForm({
       {(isOpen && (name === 'login'))
       && (
         <div className={`register register_type_${name} ${isHeaderMenuOpen ? '' : 'register_overlay'} ${isOpen ?'register_opened' : ''}`}>
-          <form className="register__container popup__form" noValidate name={name}>
+          <form className="register__container popup__form" noValidate name={name} onSubmit={onSubmit}>
             <h2 className="register__form-title">{title}</h2>
-            <fieldset className="register__form-profile popup__fieldset">
+            <fieldset className="register__form-profile popup__fieldset" disabled={isButtonDisable === true}>
               {children}
-              <button
-                type="button"
-                className="register__form-submit register__button register__button_disabled"
-                onClick={alertTempMessage}
-              >
-                {submitButtonText}
-              </button>
+
+                {(isDisable === true || isButtonDisable === true)
+                &&
+                <button
+                  type="submit"
+                  className="register__form-submit register__button register__button_disabled"
+                  disabled
+                >
+                  {submitButtonText}
+                </button>
+                }
+
+                {(isDisable === false && isButtonDisable === false)
+                &&
+                <button
+                  type="submit"
+                  className="register__form-submit register__button"
+                  // onClick={handleIsRegister}
+                  onClick={handleSubmitDataSendState}
+                >
+                  {submitButtonText}
+                </button>
+                }
+
               <div className="register__form-login-link">
                 или&nbsp;
                 <Link to="/sign-up" className="register__login-link " onClick={handleRegisterLinkClick}>Зарегистрироваться</Link>

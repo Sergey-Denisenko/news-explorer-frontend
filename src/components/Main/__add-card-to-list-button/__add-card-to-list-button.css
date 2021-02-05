@@ -17,6 +17,7 @@
 
   margin: 0px 0px 80px 0px;
   padding: 0;
+  overflow-anchor: none;
 }
 
 .main__add-card-to-list-button:hover {

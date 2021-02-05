@@ -7,6 +7,8 @@
 @import url(./__keyword/__keyword.css);
 @import url(./__keyword/_disable/_disable.css);
 @import url(./__like/__like.css);
+@import url(./__like/_normal/_normal.css);
+@import url(./__like/_active/_active.css);
 @import url(./__like/_disabled/_disabled.css);
 @import url(./__trash/__trash.css);
 @import url(./__trash/_disabled/_disabled.css);

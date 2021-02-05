@@ -11,7 +11,11 @@
 @import url(./components/SavedNews/saved-news.css);
 @import url(./components/SavedNewsHeader/saved-news-header.css);
 @import url(./components/Preloader/preloader.css);
+@import url(./components/Preloader/_visible/_visible.css);
 @import url(./components/NotFound/not-found.css);
+@import url(./components/NotFound/_visible/_visible.css);
+@import url(./components/RequestError/request-error.css);
+@import url(./components/RequestError/_visible/_visible.css);
 @import url(./components/About/about.css);
 @import url(./components/Footer/footer.css);
 @import url(./components/Register/register.css);

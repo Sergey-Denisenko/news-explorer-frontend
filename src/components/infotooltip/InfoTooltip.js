@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { infoTooltipSuccessText, infoTooltipUnSuccessText } from '../../utils/constants';
 
 function InfoTooltip({
-  closePopup, onClose, isOpen, isRegister, handleLoginLinkClick, isHeaderMenuOpen,
+  closePopup,
+  isOpen,
+  isRegister,
+  handleLoginLinkClick,
+  isHeaderMenuOpen,
 }) {
   return (
         <div className={`infotooltip ${isHeaderMenuOpen ? '' : 'infotooltip_overlay'} ${isOpen ? 'infotooltip_opened' : ''}`}>

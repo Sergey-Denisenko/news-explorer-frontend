@@ -17,9 +17,9 @@
 
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
-  .footer__menu-item {
+  /* .footer__menu-item {
     border: 1px solid green;
-  }
+  } */
 
   .footer__menu-item:nth-child(2) {
       margin-left: 20px;
